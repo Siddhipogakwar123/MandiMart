@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/styleHome.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="homePage w-full min-h-screen bg-zinc-900">
+        <nav class="fixed top-0 left-0 w-full bg-zinc-800 shadow-lg z-50">
+            <div class="w-full mx-auto px-4 py-3 flex items-center">
+
+                <!-- Left: Website Name -->
+                <div class="text-xl font-bold text-white">MandiMart</div>
+
+                <!-- Center: Search Bar -->
+                <div class="flex-grow mx-12 relative">
+                    <!-- Search Icon -->
+                    <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24"
+                            fill="none">
+                            <path d="M15 15L16.5 16.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M16.9333 19.0252C16.3556 18.4475 16.3556 17.5109 16.9333 16.9333C17.5109 16.3556 18.4475 16.3556 19.0252 16.9333L21.0667 18.9748C21.6444 19.5525 21.6444 20.4891 21.0667 21.0667C20.4891 21.6444 19.5525 21.6444 18.9748 21.0667L16.9333 19.0252Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M16.5 9.5C16.5 5.63401 13.366 2.5 9.5 2.5C5.63401 2.5 2.5 5.63401 2.5 9.5C2.5 13.366 5.63401 16.5 9.5 16.5C13.366 16.5 16.5 13.366 16.5 9.5Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <!-- Input Field -->
+                    <input type="text" placeholder="Search..."
+                        class="w-full pl-10 pr-4 py-2 rounded-md bg-zinc-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <!-- Right: Icons -->
+                <div class="flex items-center space-x-4 text-white">
+                    <!-- Favourites Icon Link -->
+                    <a href="/favourites" class="hover:text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    <!-- Profile Icon with Text -->
+                    <a href="/profile" class="hover:text-gray-300 flex items-center space-x-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                            color="#ffffff" fill="none">
+                            <path
+                                d="M15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12C13.6569 12 15 10.6569 15 9Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M17 17C17 14.2386 14.7614 12 12 12C9.23858 12 7 14.2386 7 17" stroke="#ffffff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                </div>
+
+
+            </div>
+        </nav>
+        <!-- ✅ Cards Container -->
+        <div class="cardContainer pt-24 px-6 ">
+            <div class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Repeat this card 8 times -->
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+
+                    <!-- Favourite Icon -->
+                    <button onclick="toggleFavorite(this)"
+                        class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="black"
+                            stroke-width="1.5" fill="white">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                        </svg>
+                    </button>
+
+                    <!-- Image Placeholder -->
+                    <img src="your-image-link-here.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+
+                    <!-- Info Section -->
+                    <div class="p-3 bg-zinc-700">
+                        <p class="text-lg font-bold text-white">₹ 32,000</p>
+                        <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                            iPhone 15 Pro Refurbished 4 month old...
+                        </p>
+                        <div class="mt-1 flex justify-between text-xs text-gray-400">
+                            <span>SAMUDRAPUR MIDC</span>
+                            <span>YESTERDAY</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        function toggleFavorite(button) {
+            const svg = button.querySelector("svg");
+            const currentFill = svg.getAttribute("fill");
+
+            // Toggle between red (filled) and white (unfilled)
+            svg.setAttribute("fill", currentFill === "red" ? "white" : "red");
+        }
+    </script>
+
+</body>
+
+</html>

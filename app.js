@@ -8,7 +8,15 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname,'public')))
 
 app.get('/',(req,res)=>{
-    res.send("heyy")
+    res.render("home");
+})
+
+app.get('/favourites',(req,res)=>{
+    res.render("favourites");
+})
+
+app.get('/profile',(req,res)=>{
+    res.render("profile");
 })
 
 app.listen(3000)
