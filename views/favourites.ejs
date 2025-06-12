@@ -4,14 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Favourites</title>
     <link rel="stylesheet" href="/stylesheets/styleHome.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <div class="favouritesPage w-full min-h-screen bg-zinc-900">
+    <div class="favPage homePage w-full min-h-screen bg-zinc-900 text-white ">
+        <!-- Navigation (consistent with home.ejs) -->
+        <nav class="fixed top-0 left-0 w-full bg-zinc-800 shadow-lg z-50">
+            <div class="w-full mx-auto px-4 py-3 flex items-center">
+                <div class="text-xl font-bold text-white">MandiMart</div>
+                <div class="flex-grow mx-12"></div>
+                <div class="flex items-center space-x-4 text-white">
+                    <a href="/favourites" class="hover:text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="red">
+                            <path
+                                d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="/profile" class="hover:text-gray-300 flex items-center space-x-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                            color="#ffffff" fill="none">
+                            <path
+                                d="M15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12C13.6569 12 15 10.6569 15 9Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M17 17C17 14.2386 14.7614 12 12 12C9.23858 12 7 14.2386 7 17" stroke="#ffffff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="mainContainer pt-20 px-6">
+            <a href="/" class="text-blue-400">Go to home page</a>
+            <h1 class="text-3xl font-bold mb-6">Your Favourites</h1>
+            <% if (favorites.length===0) { %>
+                <div class="text-center py-10">
+                    <p class="text-gray-400 text-lg">You haven't added any favorites yet.</p>
+                    <a href="/" class="text-blue-400 hover:text-blue-300 mt-2 inline-block">Browse products</a>
+                </div>
+                <% } else { %>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <% favorites.forEach(fav=> { %>
+                            <div
+                                class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+                                <!-- Remove Favorite Button -->
+                                <button onclick="removeFavorite('<%= fav.productId %>', this)"
+                                    class="absolute top-2 right-2 bg-white rounded-full p-1 shadow transition-transform hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24"
+                                        stroke="black" stroke-width="1.5" fill="red">
+                                        <path
+                                            d="M10.4107 19.9677C7.58942 17.858 2 13.0348 2 8.69444C2 5.82563 4.10526 3.5 7 3.5C8.5 3.5 10 4 12 6C14 4 15.5 3.5 17 3.5C19.8947 3.5 22 5.82563 22 8.69444C22 13.0348 16.4106 17.858 13.5893 19.9677C12.6399 20.6776 11.3601 20.6776 10.4107 19.9677Z" />
+                                    </svg>
+                                </button>
+
+                                <!-- Product Image -->
+                                <img src="<%= fav.productImage || '/images/default-product.jpg' %>"
+                                    alt="<%= fav.productName %>" class="w-full h-48 object-cover" />
+
+                                <!-- Product Info -->
+                                <div class="p-3 bg-zinc-700">
+                                    <p class="text-lg font-bold">
+                                        <%= fav.productPrice %>
+                                    </p>
+                                    <p class="text-sm text-gray-300 leading-snug line-clamp-1">
+                                        <%= fav.productName %>
+                                    </p>
+                                    <div class="mt-1 flex justify-between text-xs text-gray-400">
+                                        <span>
+                                            <%= fav.productLocation %>
+                                        </span>
+                                        <span>
+                                            <%= fav.productTime %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <% } %>
+        </div>
+
     </div>
+
+    <script>
+        async function removeFavorite(productId, button) {
+            try {
+                const response = await fetch('/toggle-favorite', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        // Other fields aren't needed for removal
+                    })
+                });
+
+                const data = await response.json();
+                if (data.message === 'Removed from favorites') {
+                    // Remove the card from UI
+                    button.closest('div.group').remove();
+
+                    // If no favorites left, show empty message
+                    if (document.querySelectorAll('div.group').length === 0) {
+                        document.querySelector('div.grid').outerHTML = `
+                            <div class="text-center py-10">
+                                <p class="text-gray-400 text-lg">You haven't added any favorites yet.</p>
+                                <a href="/" class="text-blue-400 hover:text-blue-300 mt-2 inline-block">Browse products</a>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (err) {
+                console.error('Error removing favorite:', err);
+            }
+        }
+    </script>
 </body>
 
 </html>
