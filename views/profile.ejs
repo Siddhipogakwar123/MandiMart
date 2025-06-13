@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+<div class="bg-zinc-900 text-zinc-200 min-h-screen flex items-start justify-center py-10 px-4">
+  <div class="w-full h-full max-w-5xl flex bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
+
+    <!-- Left Panel (25%) -->
+    <div class="w-1/4 bg-zinc-700 flex flex-col items-center justify-start py-10 px-4 space-y-6">
+
+      <a href="/" class="absolute top-4 left-4 text-zinc-300 hover:text-blue-600 text-sm bg-zinc-600 hover:bg-white px-3 py-1 rounded">
+    ← Home
+    </a>
+    
+      <img src="/images/sid.png" alt="Profile Photo" class="w-28 h-28 rounded-full border-4 border-zinc-500">
+      <h2 class="text-xl font-semibold"><%= user.name %></h2>
+    </div>
+
+    <!-- Right Panel (75%) -->
+    <div class="w-3/4 px-8 py-10 space-y-6">
+
+      <!-- Personal Info -->
+      <div class="space-y-2">
+        <div><span class="font-semibold">Email:</span> <%= user.email %></div>
+        <p><span class="font-semibold">Address:</span> <%= user.address %></p>
+        <p><span class="font-semibold">Mobile:</span> <%= user.phone %></p>
+        <p><span class="font-semibold">Other Info:</span> <%= user.otherInfo %></p>
+      </div>
+
+      <!-- Products Listed -->
+      <div class="flex items-center justify-between bg-zinc-700 p-4 rounded-lg">
+        <p class="text-lg font-semibold">Products Listed: <span class="text-green-400"><%= user.productsCount %></span></p>
+        <a href="/my_products" class="bg-zinc-600 hover:bg-zinc-500 text-sm px-4 py-2 rounded text-white">Show All</a>
+
+      </div>
+
+      <!-- Purchases -->
+      <div class="flex items-center justify-between bg-zinc-700 p-4 rounded-lg">
+        <p class="text-lg font-semibold">My Purchases: <span class="text-green-400"><%= user.purchasesCount %></span></p>
+       <a href="/my_purchases" class="bg-zinc-600 hover:bg-zinc-500 text-sm px-4 py-2 rounded text-white"> Show All </a>
+
+      </div>
+
+      <!-- Contact Us -->
+      <div class="pt-6 border-t border-zinc-600">
+        <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+        <form action="/contact" method="POST" class="space-y-4">
+          <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-2 rounded bg-zinc-600 text-white placeholder-zinc-300" required>
+          <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-2 rounded bg-zinc-600 text-white placeholder-zinc-300" required>
+          <textarea name="message" rows="3" placeholder="Your Message" class="w-full px-4 py-2 rounded bg-zinc-600 text-white placeholder-zinc-300" required></textarea>
+          <button type="submit" class="bg-green-600 hover:bg-green-500 px-4 py-2 rounded text-white">Send</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

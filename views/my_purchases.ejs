@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Purchases | MandiMart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 text-white min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-zinc-800 shadow-lg z-50">
+    <div class="w-full mx-auto px-4 py-3 flex items-center">
+      <div class="text-xl font-bold text-white">MandiMart</div>
+      <div class="flex-grow mx-12"></div>
+      <div class="flex items-center space-x-4 text-white">
+        <a href="/profile" class="hover:text-gray-300">Profile</a>
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/my_products" class="hover:text-gray-300">My Products</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="pt-24 px-6">
+    <h1 class="text-2xl font-bold mb-6">🛒 My Purchases</h1>
+
+    <% if (products.length === 0) { %>
+      <p class="text-gray-400">You haven't purchased any products yet.</p>
+    <% } else { %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <% products.forEach(product => { %>
+          <div class="group rounded-lg border border-gray-700 hover:border-zinc-400 bg-zinc-800 shadow-md overflow-hidden relative transition-transform duration-200 hover:scale-105">
+            <img src="<%= product.image || '/images/default.jpg' %>" alt="Product Image" class="w-full h-48 object-cover" />
+            <div class="p-3 bg-zinc-700">
+              <p class="text-lg font-bold text-white">₹ <%= product.price %></p>
+              <p class="text-sm text-gray-300 line-clamp-1"><%= product.name %></p>
+              <div class="mt-1 flex justify-between text-xs text-gray-400">
+                <span><%= product.location || 'Unknown' %></span>
+                <span><%= product.createdAt?.toDateString?.() || 'N/A' %></span>
+              </div>
+              <div class="mt-2 text-green-400 text-xs font-medium">✅ Purchased</div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+
+</body>
+
+</html>

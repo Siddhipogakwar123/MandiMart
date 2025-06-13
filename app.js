@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const allProducts = require('./data/products');
+
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -44,8 +46,20 @@ app.get('/favourites', (req, res) => {
   res.render("favourites", { favorites });
 });
 
+
+//route for the profile page
 app.get('/profile', (req, res) => {
-  res.render("profile");
+  res.render("profile", {
+  user: {
+    name: "Himesh Chandrakar",
+    email: "b23.com",
+    address: "123, seher",
+    phone: "+91-xxxxxxxx",
+    otherInfo: "xyz",
+    productsCount: 15,
+    purchasesCount: 8
+  }
+});
 });
 
 app.post('/toggle-favorite', (req, res) => {
@@ -62,5 +76,35 @@ app.post('/toggle-favorite', (req, res) => {
   
   saveFavorites(); // Save to file after modification
 });
+
+//route for products
+app.get('/my_products', (req, res) => {
+  // const currentUserId = req.session.user.id;
+  let currentUserId= "user123"; //temp
+  const userProducts = allProducts.filter(p => p.userId === currentUserId);
+  res.render('my_products', { products: userProducts });
+});
+
+//to add new products
+app.post('/add-product', (req, res) => {
+  const { title, price, description } = req.body;
+  allProducts.push({
+    id: Date.now().toString(),
+    title,
+    price,
+    description,
+    ownerId: req.auth?.userId || "guest",
+  });
+  res.redirect('/my_products'); // or /profile
+});
+
+//to render my purchases
+app.get('/my_purchases', (req, res) => {
+  const currentUserId = "user123"; // temporary ID
+  const purchasedProducts = allProducts.filter(p => p.purchaseBy === currentUserId);
+  res.render('my_purchases', { products: purchasedProducts });
+});
+
+
 
 app.listen(3000);
