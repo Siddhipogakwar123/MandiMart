@@ -19,7 +19,18 @@
   },
   "homepage": "https://github.com/Siddhipogakwar123/MandiMart#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "config": "^4.0.0",
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "multer": "^2.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10"
   }
 }

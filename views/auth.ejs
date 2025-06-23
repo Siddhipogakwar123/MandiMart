@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-zinc-900 text-zinc-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= formType === "signup" ? "Sign Up" : "Login" %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-zinc-800 p-8 rounded-xl shadow-xl">
+    <h2 class="text-2xl font-semibold mb-6 text-center">
+      <%= formType === "signup" ? "Create an Account" : "Login to Your Account" %>
+    </h2>
+    
+    <form action="<%= formType === 'signup' ? '/signup' : '/login' %>" method="POST" class="space-y-4">
+      <% if (formType === "signup") { %>
+        <div>
+          <label class="block text-sm mb-1" for="fullname">Full Name</label>
+          <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="text" id="fullname" name="fullname" required>
+        </div>
+      <% } %>
+
+      <div>
+        <label class="block text-sm mb-1" for="email">Email</label>
+        <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label class="block text-sm mb-1" for="password">Password</label>
+        <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="password" id="password" name="password" required>
+      </div>
+
+      <% if (formType === "signup") { %>
+        <div>
+          <label class="block text-sm mb-1" for="confirmPassword">Confirm Password</label>
+          <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" for="contact">Contact Number</label>
+          <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="tel" id="contact" name="contact" required>
+        </div>
+      <% } %>
+        <% if (typeof error !== 'undefined') { %>
+              <div class="text-red-400 text-sm text-center"><%= error %></div>
+        <% } %>
+
+      <button type="submit" class="w-full mt-4 bg-zinc-600 hover:bg-zinc-500 text-white py-2 rounded">
+        <%= formType === "signup" ? "Sign Up" : "Login" %>
+      </button>
+    </form>
+
+    <div class="mt-4 text-sm text-center">
+      <% if (formType === "signup") { %>
+        Already have an account? <a href="/login" class="text-zinc-400 underline">Login here</a>
+      <% } else { %>
+        Don’t have an account? <a href="/signup" class="text-zinc-400 underline">Sign up here</a>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
