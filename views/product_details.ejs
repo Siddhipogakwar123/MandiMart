@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= product.title %> - Product Details</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="/javascript/script.js" defer></script>
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  
+  <style>
+  /* Customize Swiper navigation buttons */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: black; /* Change color */
+    width: 30px;   /* Smaller size */
+    height: 30px;
+  }
+
+  /* Optional: make arrows a bit more centered inside slider */
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 20px;  /* Smaller icon */
+  }
+
+  .swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #333; /* Slightly darker on hover */
+}
+
+</style>
+
+</head>
+
+<body class="bg-zinc-900 text-white min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-4">
+
+    <!-- Main Product Box -->
+    <div class="bg-zinc-800 rounded-2xl shadow p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Product Image -->
+
+      <!-- Swiper Image Slider -->
+      <div class="swiper w-full h-96 rounded-xl overflow-hidden border border-zinc-700">
+        <div class="swiper-wrapper">
+          <% product.image.forEach(img => { %>
+            <div class="swiper-slide">
+              <img src="<%= img %>" alt="Product Image"
+                  class="w-full h-96 object-cover"
+                  onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=No+Image';">
+            </div>
+          <% }) %>
+        </div>
+
+        <!-- Swiper Navigation & Pagination -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Product Details -->
+      <div>
+        <h1 class="text-3xl font-bold mb-2"><%= product.title %></h1>
+        <p class="text-green-400 font-semibold text-xl mb-4">₹<%= product.price %></p>
+        <p class="text-zinc-300 mb-4"><%= product.description %></p>
+
+        <p class="text-sm text-zinc-400 mb-1"><strong>Category:</strong> <%= product.category %></p>
+        <p class="text-sm text-zinc-400 mb-1"><strong>Condition:</strong> <%= product.condition %></p>
+        <p class="text-sm text-zinc-400 mb-1"><strong>Location:</strong> <%= product.location %></p>
+        <p class="text-sm text-zinc-400 mb-4"><strong>Posted on:</strong> <%= product.datePosted %></p>
+
+        <!-- Seller Info -->
+        <div class="bg-zinc-700 p-4 rounded-lg text-sm">
+          <p><strong>Seller:</strong> <%= product.sellerName %></p>
+          <p><strong>Contact:</strong> <%= product.sellerContact %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">Related Products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <% relatedProducts.forEach(prod => { %>
+          <div class="bg-zinc-800 rounded-lg shadow p-4">
+            <img src="<%= prod.image %>" alt="Product Image"
+                 class="w-full h-50 object-cover rounded border border-zinc-600 mb-2"
+                 onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';">
+            <h3 class="font-semibold text-white"><%= prod.title %></h3>
+            <p class="text-green-400 font-bold">₹<%= prod.price %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
