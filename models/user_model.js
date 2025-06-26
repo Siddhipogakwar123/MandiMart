@@ -15,7 +15,13 @@ const userSchema = mongoose.Schema({
         type:Array,
         default:[]
     },
-    picture : String
+    picture : String,
+    emailVerified: {
+    type: Boolean,
+    default: false
+  },
+  verificationToken: String,
+  verificationTokenExpires: Date
 });
 
 module.exports=mongoose.model("user",userSchema);

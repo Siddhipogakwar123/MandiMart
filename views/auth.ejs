@@ -27,13 +27,20 @@
 
       <div>
         <label class="block text-sm mb-1" for="password">Password</label>
-        <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="password" id="password" name="password" required>
+        <div class="relative">
+          <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600 pr-10" type="password" id="password" name="password" required>
+          <button type="button" onclick="toggleVisibility('password')" class="absolute right-2 top-2 text-sm text-zinc-400">👁️</button>
+        </div>
       </div>
 
       <% if (formType === "signup") { %>
         <div>
           <label class="block text-sm mb-1" for="confirmPassword">Confirm Password</label>
-          <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600" type="password" id="confirmPassword" name="confirmPassword" required>
+          <div class="relative">
+            <input class="w-full p-2 bg-zinc-700 rounded border border-zinc-600 pr-10" type="password" id="confirmPassword" name="confirmPassword" required>
+            <button type="button" onclick="toggleVisibility('confirmPassword')" class="absolute right-2 top-2 text-sm text-zinc-400">👁️</button>
+          </div>
+
         </div>
 
         <div>
@@ -45,7 +52,12 @@
               <div class="text-red-400 text-sm text-center"><%= error %></div>
         <% } %>
 
-      <button type="submit" class="w-full mt-4 bg-zinc-600 hover:bg-zinc-500 text-white py-2 rounded">
+      <button
+        type="submit"
+        class="w-full mt-4 bg-zinc-600 text-white py-2 rounded 
+              transition-all duration-200 ease-in-out 
+              hover:bg-zinc-500 hover:scale-105"
+      >
         <%= formType === "signup" ? "Sign Up" : "Login" %>
       </button>
     </form>
@@ -58,5 +70,12 @@
       <% } %>
     </div>
   </div>
+  <script>
+    function toggleVisibility(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
+
 </body>
 </html>
