@@ -26,7 +26,7 @@ app.use("/users", usersRouter);
 app.use("/owners", productsRouter);
 // app.use("/favorites", favRouter);
 app.use("/", authRouter);
-
+app.use('/', productsRouter); 
 
 app.listen(3000, () => {
   console.log("Server started on http://localhost:3000");
@@ -130,13 +130,7 @@ app.post('/toggle-favorite', (req, res) => {
 // });
 
 
-
-// app.get('/', (req, res) => {
-//   res.send("Homepage route is working! Add a homepage view later.");
-// });
-
 // http://localhost:3000/product/1
-
 
 app.get('/product/:id',(req,res)=>{
     const product = {
