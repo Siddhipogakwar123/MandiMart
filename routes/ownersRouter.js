@@ -3,7 +3,6 @@ const router= express.Router();
 const ownerModel = require('../models/owner');
 
 
-
 router.get("/",function(req,res){
     res.send("hey");
 })

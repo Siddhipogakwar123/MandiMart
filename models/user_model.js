@@ -5,13 +5,21 @@ const userSchema = mongoose.Schema({
     email : String,
     password : String, 
     userid: String,
+    orders : Number,
+    contact : Number,
     cart : {
         type:Array,
         default:[]
     },
-    orders : Number,
-    contact : Number,
     purchased:{
+        type:Array,
+        default:[]
+    },
+    sell:{
+        type:Array,
+        default:[]
+    },
+    favourite:{
         type:Array,
         default:[]
     },
