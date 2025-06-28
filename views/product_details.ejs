@@ -83,9 +83,15 @@
           <p><strong>Seller:</strong> <%= product.sellerName %></p>
           <p><strong>Contact:</strong> <%= product.sellerContact %></p>
         </div>
+        <!-- Buy Now Button -->
+        <div class="mt-6">
+          <a href="/buy/<%= product._id %>" 
+          class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300">
+          Buy Now
+          </a>
+        </div>
       </div>
     </div>
-
     <!-- Related Products -->
     <div class="mt-12">
       <h2 class="text-2xl font-bold mb-4">Related Products</h2>
