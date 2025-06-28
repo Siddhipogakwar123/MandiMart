@@ -1,7 +1,3 @@
-function addToCart(productId) {
-  alert("Added product " + productId + " to cart!");
-  // Later: use fetch() to send to backend
-}
 document.addEventListener("DOMContentLoaded", function () {
     new Swiper('.swiper', {
       loop: true,
