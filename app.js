@@ -10,6 +10,7 @@ const productsRouter = require("./routes/productsRouter.js");
 const authRouter = require("./routes/authRouter.js");
 const cookieParser = require("cookie-parser");
 const noCache = require("./middlewares/noCache"); 
+const paymentRouter = require('./routes/paymentRouter');
 
 // Middlewares
 app.set("view engine", "ejs");
@@ -27,10 +28,7 @@ app.use("/owners", productsRouter);
 // app.use("/favorites", favRouter);
 app.use("/", authRouter);
 app.use('/', productsRouter); 
-
-app.listen(3000, () => {
-  console.log("Server started on http://localhost:3000");
-});
+app.use('/', paymentRouter);
 
 
 
@@ -159,6 +157,7 @@ app.get('/product/:id',(req,res)=>{
     res.render("product_details",{ product, relatedProducts });
 })
 
-app.listen(3000, () => {
 
+app.listen(3000, () => {
+  console.log("Server started on http://localhost:3000");
 });

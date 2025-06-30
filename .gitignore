@@ -4,3 +4,5 @@ rough
 # Node.js dependencies
 node_modules/
 
+# .env: api key and secret
+.env
