@@ -5,7 +5,7 @@ const productModel = require('../models/product_model');
 
 // GET: Add product form (protected)
 router.get('/add-product', isLoggedIn, (req, res) => {
-  res.render('add_product');
+  res.render('add_products');
 });
 
 // POST: Handle product form submission
@@ -17,7 +17,7 @@ router.post('/add-product', isLoggedIn, async (req, res) => {
     price,
     createdAt: new Date(),
     userId: req.user.id,
-    purchaseBy: "-1"
+    purchaseBy: null
   });
   res.redirect('/users'); // or /my_products
 });

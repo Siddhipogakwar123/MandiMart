@@ -28,7 +28,7 @@ app.use("/owners", productsRouter);
 // app.use("/favorites", favRouter);
 app.use("/", authRouter);
 app.use('/products', productsRouter);
-app.use('/', paymentRouter);
+app.use('/payment', paymentRouter);
 
 
 
